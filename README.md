@@ -39,9 +39,8 @@
 - `--reddit` — use reddit.com search source
 - `--filter` + `space` + `siteA.com site-B.de site.C.am` — use custom site filter
 
-### For MacOS only
-
-###### _(installed application required)_
+> **Warning**
+> MacOS flags only. Installed applications required
 
 - `--safari` — use Safari browser
 - `--chrome` — use Chrome browser
