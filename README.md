@@ -39,7 +39,7 @@
 - `--reddit` — use reddit.com search source
 - `--filter` + `space` + `siteA.com site-B.de site.C.am` — use custom site filter
 
-> **Warning**
+> **Warning**                                                                       
 > MacOS flags only. Installed applications required
 
 - `--safari` — use Safari browser
