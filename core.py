@@ -1,3 +1,5 @@
+version = "1.0.2"
+
 flags = {
   "query": "--query",
   "useGoogle": "--google",
@@ -16,19 +18,40 @@ flags = {
   "useMedium": "--medium",
   "useReddit": "--reddit",
   "devMode": "--dev",
+  "help": "--help",
 }
 
+flag_help = [
+  "--query text\t\t:query flag",
+  "--google\t\t:use Google search engine",
+  "--duck\t\t:use DuckDuckGo search engine",
+  "--bing\t\t:use Bing search engine",
+  "--engine url\t\t:use custom search engine. Engine example: --engine https://example.com/search?q=",
+  "--browser abs_path\t:use custom browser (alpha)",
+  "--safari\t\t:use Safari browser (installed app required. MacOS only)",
+  "--chrome\t\t:use Chrome browser (installed app required. MacOS only)",
+  "--firefox\t\t:use Firefox browser (installed app required. MacOS only)",
+  "--opera\t\t:use Opera browser (installed app required. MacOS only)",
+  "--brave\t\t:use Brave browser (installed app required. MacOS only)",
+  "--filter filter\t:use site filter. Filter example: --filter site-a.com siteB.de",
+  "--sof\t\t:use stackoverflow.com resources",
+  "--sxc\t\t:use stackexchange.com resources",
+  "--medium\t\t:use medium.com resources",
+  "--reddit\t\t:use reddit.com resources",
+  "--dev\t\t:use stackoverflow.com, stackexchange.com, medium.com, reddit.com resources",
+]
+
 search_engines = {
-    "google": "https://google.com/search?q=",
-    "duck": "https://duckduckgo.com/?q=",
-    "bing": "https://www.bing.com/search?q=",
+  "google": "https://google.com/search?q=",
+  "duck": "https://duckduckgo.com/?q=",
+  "bing": "https://www.bing.com/search?q=",
 }
 
 sources = {
-    "stackOverFlow": "stackoverflow.com",
-    "stackExchange": "stackexchange.com",
-    "medium": "medium.com",
-    "reddit": "reddit.com",
+  "stackOverFlow": "stackoverflow.com",
+  "stackExchange": "stackexchange.com",
+  "medium": "medium.com",
+  "reddit": "reddit.com",
 }
 
 osx_browsers = {
@@ -38,6 +61,13 @@ osx_browsers = {
   "opera": "/Applications/Opera.app %s",
   "brave": "/Applications/Brave\ Browser.app %s",
 }
+
+def print_help():
+  print("\nBrowser Search CLI v." + version + ":\n")
+  for i, item in enumerate(flag_help):
+    print(''.join(["", str(i + 1), ". ", item]))
+  print("\n")
+
 
 def get_search_engine(arg_list):
   if (flags.get("useGoogle") in arg_list):

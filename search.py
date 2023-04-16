@@ -1,15 +1,21 @@
 import webbrowser
 from sys import argv
-from core import get_browser, get_filters, get_query, get_search_engine
+from core import get_browser, get_filters, get_query, get_search_engine, flags, print_help
 
 args = argv[1:]
 
 def execute():
-  if (len(args) == 0):
+  query = get_query(args)
+  if (len(args) == 0 or query == ""):
+    print("Incorrect or empty query. Make sure you did this properly")
+    print_help()
+    return
+  if (flags.get("help") in args):
+    print_help()
     return
 
   browser = get_browser(args)
-  url = ''.join(filter(None, (get_search_engine(args), get_query(args), get_filters(args))))
+  url = ''.join(filter(None, (get_search_engine(args), query, get_filters(args))))
 
   if (browser):
     webbrowser.get("open -a" + browser).open_new_tab(url)
